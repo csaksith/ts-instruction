@@ -81,9 +81,14 @@ function dropItem() {
   //     idx = index;
   //     name = item.name;
   //   }
-  let item: Item = findItem(id);
-  items.splice(idx, 1);
-  console.log(`${name} was removed.`);
+  let idx: number = items.findIndex((item) => item.id === id);
+  if (idx !== -1) {
+    let name: string = items[idx].name;
+    items.splice(idx, 1);
+    console.log(`${name} was removed.`);
+  } else {
+    console.log("Item not found.");
+  }
 }
 function findItem(id: number): Item {
   let item: Item = new Item();
